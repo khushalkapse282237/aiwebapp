@@ -2,7 +2,7 @@
 
 An AI-powered web app that transforms long-form blog posts into platform-optimized social media content (LinkedIn, Twitter/X, YouTube, and SEO meta descriptions) in a single click.
 
-**Live Deploy:** [https://blog-repurposer.vercel.app](https://blog-repurposer.vercel.app)
+**Live Deploy:** [https://blog-repurposer.vercel.app](https://aiwebapp-private-1xsiwq6v5-khushalkapse282237s-projects.vercel.app/)
 
 ---
 
@@ -17,7 +17,7 @@ An AI-powered web app that transforms long-form blog posts into platform-optimiz
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/<your-username>/blog-repurposer.git
+git clone https://github.com/khushalkapse282237/aiwebapp.git
 cd blog-repurposer
 
 # 2. Install dependencies
@@ -42,10 +42,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 |---|---|
 | **Next.js 16 (App Router)** | Full-stack React framework with built-in API routes, so the extraction and AI generation endpoints live alongside the frontend — no separate backend needed. Server-side route handlers also keep the API key secure. |
 | **TypeScript** | Catches type errors at build time, especially important when parsing structured JSON responses from the LLM. The typed interfaces for extraction and generation responses made the AI integration much more reliable. |
-| **Tailwind CSS 4** | Utility-first CSS that made it fast to build a responsive, dark-mode-ready UI without writing custom stylesheets. The new v4 engine is significantly faster during development. |
-| **Groq API (Llama 3.3-70B)** | Provides extremely fast inference (~10x faster than OpenAI) with a generous free tier. The 70B parameter model produces high-quality social media copy that's comparable to GPT-4 for this use case. |
-| **Mozilla Readability + JSDOM** | The same extraction engine Firefox uses for Reader View. It reliably strips navigation, ads, and boilerplate from any blog, giving clean article text to feed the LLM. |
-| **Vercel** | Zero-config deployment for Next.js with automatic previews, edge caching, and environment variable management. Push-to-deploy makes iteration fast. |
+| **Tailwind CSS 4** | I love tailwind css thus used it. |
+| **Groq API (Llama 3.3-70B)** | There are better ai we can use, the reason I use because Groq gives 30 request/min that is sufficient for me to deploy a app on free tier (tradeoff) |
+| **Vercel** | Zero-config deployment for Next.js with automatic previews, edge caching, and environment variable management. |
 
 ---
 
@@ -70,13 +69,13 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 | Phase | Approx. Time |
 |---|---|
-| Project setup & architecture planning | ~15 min |
-| Blog content extraction (URL fetch + Readability parsing) | ~30 min |
-| AI integration (Groq API, prompt engineering, JSON parsing) | ~45 min |
-| Frontend (components, styling, dark mode, animations) | ~1 hr |
+| Project setup & architecture planning | ~10 min |
+| Blog content extraction (URL fetch + Readability parsing) | ~20 min |
+| AI integration (Groq API, prompt engineering, JSON parsing) | ~15 min |
+| Frontend (components, styling, dark mode, animations) | ~45 hr |
 | Features (copy, export, history, per-section regeneration) | ~30 min |
-| Deployment & testing | ~15 min |
-| **Total** | **~3 hrs** |
+| Deployment & testing | ~20 min |
+| **Total** | **~2 hrs 20min** |
 
 ---
 
@@ -87,7 +86,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | # | Requirement | Status |
 |---|---|---|
 | 1 | Accept a blog URL as input (paste or type) | Done |
-| 2 | Extract blog content programmatically | Done — Mozilla Readability + JSDOM |
+| 2 | Extract blog content programmatically | Done |
 | 3 | Send extracted content to an AI model | Done — Groq Llama 3.3-70B |
 | 4a | 3 LinkedIn post variations (Educational, Controversial Take, Personal Story) | Done |
 | 4b | 3 Twitter/X thread hooks (Curiosity Gap, Contrarian, Data-Led) | Done |
