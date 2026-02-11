@@ -2,7 +2,7 @@
 
 An AI-powered web app that transforms long-form blog posts into platform-optimized social media content (LinkedIn, Twitter/X, YouTube, and SEO meta descriptions) in a single click.
 
-**Live Deploy:** [https://blog-repurposer.vercel.app](https://aiwebapp-private-1xsiwq6v5-khushalkapse282237s-projects.vercel.app/)
+**Live Deploy:** [https://blog-repurposer.vercel.app](https://aiwebapp-private.vercel.app/)
 
 ---
 
