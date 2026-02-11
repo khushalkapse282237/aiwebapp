@@ -11,6 +11,12 @@ import {
 } from "@/lib/types";
 import { saveToHistory } from "@/lib/utils";
 
+async function parseJson(res: Response) {
+  const text = await res.text();
+  if (!text) throw new Error("Server returned an empty response. Please try again.");
+  return JSON.parse(text);
+}
+
 export function useRepurposer() {
   const [state, setState] = useState<RepurposerState>({
     status: "idle",
@@ -42,11 +48,11 @@ export function useRepurposer() {
         });
 
         if (!extractRes.ok) {
-          const err = await extractRes.json();
+          const err = await parseJson(extractRes);
           throw new Error(err.error || "Failed to extract blog content.");
         }
 
-        const extracted: ExtractResponse = await extractRes.json();
+        const extracted: ExtractResponse = await parseJson(extractRes);
 
         setState((prev) => ({
           ...prev,
@@ -67,11 +73,11 @@ export function useRepurposer() {
         });
 
         if (!genRes.ok) {
-          const err = await genRes.json();
+          const err = await parseJson(genRes);
           throw new Error(err.error || "Failed to generate content.");
         }
 
-        const generated: GenerateResponse = await genRes.json();
+        const generated: GenerateResponse = await parseJson(genRes);
 
         saveToHistory(url, extracted.title, generated);
 
@@ -119,11 +125,11 @@ export function useRepurposer() {
         });
 
         if (!res.ok) {
-          const err = await res.json();
+          const err = await parseJson(res);
           throw new Error(err.error || "Failed to regenerate section.");
         }
 
-        const { result } = await res.json();
+        const { result } = await parseJson(res);
 
         setState((prev) => {
           if (!prev.generated) return prev;
